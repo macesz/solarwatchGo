@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -11,14 +12,17 @@ import (
 	"github.com/macesz/solarwatchGo/internal/service/solarwatch"
 )
 
-const apiKey = "3c4308a7a3e66d61d8e7f4b1cc5ec4bc"
 
 func main() {
+	apiKey := os.Getenv("APIKEY");
+
+	print(apiKey)
+
 	geoLocService := geolocation.NewService(apiKey)
 
-	solWatchSerice := solarwatch.NewService()
+	solWatchService := solarwatch.NewService()
 
-	handler := swHandler.NewHandler(geoLocService, solWatchSerice)
+	handler := swHandler.NewHandler(geoLocService, solWatchService)
 
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)

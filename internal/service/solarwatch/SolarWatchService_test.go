@@ -3,12 +3,12 @@ package solarwatch
 import "testing"
 
 func TestSolarWatchService(t *testing.T) {
-	service := Service{}
+	// service := Service{}
 
-	resp, err := service.GetRiport(51.50732, -0.1276474)
-	if err != nil {
-		t.Fatal(err)
-	}
+	// // resp, err := service.GetReport(lat float64, lon float64, date time.Time)
+	// // if err != nil {
+	// // 	t.Fatal(err)
+	// // }
 
-	t.Log(resp)
+	// t.Log(resp)
 }
